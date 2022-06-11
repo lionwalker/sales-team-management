@@ -18,6 +18,7 @@ class SalesPersonCreateRequest extends FormRequest
             'email' => 'required|string|max:128|unique:sales_people,email',
             'telephone' => 'required|digits:11',
             'current_routes' => 'required|string|max:128',
+            'joined_date' => 'required|string|max:128',
             'comments' => 'nullable',
         ];
     }

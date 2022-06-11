@@ -14,4 +14,9 @@ use App\Http\Controllers\SalesPersonController;
 |
 */
 
-Route::resource('/', SalesPersonController::class)->except('create', 'edit');
+Route::resource('/', SalesPersonController::class);
+Route::get('/create', [SalesPersonController::class, 'create']);
+Route::post('/store', [SalesPersonController::class, 'store']);
+Route::get('/{person}', [SalesPersonController::class, 'edit']);
+Route::put('/{person}', [SalesPersonController::class, 'update']);
+Route::delete('/{person}', [SalesPersonController::class, 'destroy']);

@@ -4,27 +4,17 @@ namespace App\Traits;
 
 trait NotificationTrait
 {
-    public function sendResponse($result, $message): \Illuminate\Http\JsonResponse
+    public function sendResponse($message)
     {
-        $response = [
-            'success' => true,
-            'message' => $message,
-            'data' => $result,
-        ];
-
-        return response()->json($response, 200);
+        session()->flash('success', true);
+        session()->flash('message', $message);
+        return redirect("/");
     }
 
-    public function sendError($error, $errorMessages = [], $code = 200): \Illuminate\Http\JsonResponse
+    public function sendError($error, $status = 400)
     {
-        $response = [
-            'success' => false,
-            'message' => $error,
-        ];
-        if (!empty($errorMessages)) {
-            $response['data'] = $errorMessages;
-        }
-
-        return response()->json($response, $code);
+        session()->flash('success', false);
+        session()->flash('message', $error);
+        return redirect("/");
     }
 }

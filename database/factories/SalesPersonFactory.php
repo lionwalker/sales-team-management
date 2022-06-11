@@ -26,6 +26,7 @@ class SalesPersonFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'telephone' => $this->faker->e164PhoneNumber,
             'current_routes' => $this->faker->streetName,
+            'joined_date' => $this->faker->date('Y-m-d'),
             'comments' => $this->faker->text()
         ];
     }

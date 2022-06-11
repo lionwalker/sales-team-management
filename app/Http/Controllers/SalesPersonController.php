@@ -30,6 +30,16 @@ class SalesPersonController extends Controller
     /**
      * Display the specified resource.
      *
+     * @return Application|Factory|View|\Illuminate\Http\JsonResponse
+     */
+    public function create()
+    {
+        return view('create');
+    }
+
+    /**
+     * Display the specified resource.
+     *
      * @param SalesPerson $person
      * @return \Illuminate\Http\JsonResponse
      */
@@ -42,21 +52,32 @@ class SalesPersonController extends Controller
      * Store a newly created resource in storage.
      *
      * @param SalesPersonCreateRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(SalesPersonCreateRequest $request)
     {
         $service = new SalesPersonService();
-        $person = $service->create($request);
+        $service->create($request);
 
-        return $this->sendResponse($person, "Sales person created successfully");
+        return $this->sendResponse("Sales person created successfully");
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param SalesPerson $person
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(SalesPerson $person)
+    {
+        return view('edit', compact('person'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param SalesPersonUpdateRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(SalesPersonUpdateRequest $request)
     {
@@ -65,21 +86,21 @@ class SalesPersonController extends Controller
         }
 
         $service = new SalesPersonService();
-        $person = $service->update($request);
+        $service->update($request);
 
-        return $this->sendResponse($person, "Sales person updated successfully");
+        return $this->sendResponse("Sales person updated successfully");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param SalesPerson $person
-     * @return \Illuminate\Http\JsonResponse
+     * @return Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(SalesPerson $person)
     {
         $person->delete();
 
-        return $this->sendResponse(null, 'Salse person deleted successfully');
+        return $this->sendResponse('Salse person deleted successfully');
     }
 }

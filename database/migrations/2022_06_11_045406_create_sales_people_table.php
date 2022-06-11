@@ -19,6 +19,7 @@ class CreateSalesPeopleTable extends Migration
             $table->string('email', 128);
             $table->string('telephone', 15);
             $table->string('current_routes', 128);
+            $table->string('joined_date', 128);
             $table->text('comments');
             $table->timestamps();
         });

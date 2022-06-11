@@ -15,3 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+mix.copyDirectory('node_modules/bootstrap/dist', 'public/plugins/bootstrap');
+mix.copyDirectory('node_modules/jquery/dist', 'public/plugins/jquery');

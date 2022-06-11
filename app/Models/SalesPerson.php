@@ -13,7 +13,8 @@ class SalesPerson extends Model
         'name',
         'email',
         'telephone',
-        'current_route',
+        'current_routes',
+        'joined_date',
         'comments',
     ];
 }
