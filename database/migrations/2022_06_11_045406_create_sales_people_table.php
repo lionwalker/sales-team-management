@@ -15,10 +15,10 @@ class CreateSalesPeopleTable extends Migration
     {
         Schema::create('sales_people', function (Blueprint $table) {
             $table->id();
-            $table->string('name', ['length' => 128]);
-            $table->string('email', ['length' => 128]);
-            $table->bigInteger('telephone');
-            $table->string('current_routes', ['length' => 128]);
+            $table->string('name', 128);
+            $table->string('email', 128);
+            $table->string('telephone', 15);
+            $table->string('current_routes', 128);
             $table->text('comments');
             $table->timestamps();
         });

@@ -14,4 +14,4 @@ use App\Http\Controllers\SalesPersonController;
 |
 */
 
-Route::get('/', [SalesPersonController::class, 'index']);
+Route::resource('/', SalesPersonController::class)->except('create', 'edit');
